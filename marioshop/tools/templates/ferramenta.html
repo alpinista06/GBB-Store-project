@@ -1,0 +1,123 @@
+{% extends 'oscar/dashboard/layout.html' %}
+{% load currency_filters %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {{ title }} | {% trans "Ferramentas" %} | {{ block.super }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <ul class="breadcrumb">
+        <li>
+            <a href="{% url 'dashboard:index' %}">{% trans "Dashboard" %}</a>
+        </li>
+        <li>
+            <a href="{% url 'accounts_dashboard:accounts-list' %}">{% trans "Accounts" %}</a>
+        </li>
+        {% if account %}
+            <li>
+                <a href="{% url 'accounts_dashboard:accounts-detail' account.id %}">{{ account }}</a>
+            </li>
+            <li class="active">{% trans "Update" %}</li>
+        {% else %}
+            <li class="active">{% trans "Create" %}</li>
+        {% endif %}
+    </ul>
+{% endblock %}
+
+{% block header %}
+    <div class="page-header">
+        <a id="return" href="{% url 'accounts_dashboard:accounts-create' %}" class="btn btn-large btn-primary pull-right">{% trans "Create new account " %}</a></p>
+        <a id="create_new_saldo" style="margin-right: 10px;" href="{% url 'inserir-credito-view' %}" class="btn btn-large btn-primary pull-right">{% trans "Criar novo credito" %}</a></p>
+        <a id="create_new_tool" style="margin-right: 10px;" href="{% url 'criar-ferramenta-view' %}" class="btn btn-large btn-primary pull-right">{% trans "Criar nova ferramenta" %}</a></p>
+    <h1>{{ title }}</h1>
+</div>
+{% endblock header %}
+
+{% block headertext %}{{ title }}{% endblock %}
+
+{% block dashboard_content %}
+
+{% if account %}
+{% include 'accounts/dashboard/partials/account_detail.html' %}
+<h2>{% trans "Edit this account" %}</h2>
+{% endif %}
+
+<div class="panel panel-default">
+    <div class="panel-heading">{% trans "Edit" %}</div>
+    <div class="panel-body">
+        <form action="." method="post">
+            {% csrf_token %}
+            <span class="help-block">{{ form.non_field_errors }}</span>
+            {{ form }}
+            <hr></hr>
+            <div class="form-actions">
+                <button class="btn btn-primary btn-large" type="submit">{% trans "Save" %}</button>
+                {% trans "or" %}
+                <a href="{% url 'accounts_dashboard:accounts-list' %}">{% trans "cancel" %}</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">{{ queryset_description }}</div>
+  {% if accounts.count %}
+      <table class="table table-striped panel-body">
+          <tr>
+              <th>{% trans "Name" %}</th>
+              <th>{% trans "Type" %}</th>
+              <th>{% trans "Description" %}</th>
+              <th>{% trans "Value" %}</th>
+              <th></th>
+          </tr>
+          {% for ToolType in object_list %}
+              {# When we're using bootstrap 2.1, we can use table row colors #}
+              <tr {% if account.is_frozen %}style="color: #aaa"{% endif %}>
+                  <td><a href="{% url 'accounts_dashboard:accounts-detail' account.id %}">{{ account.name|default:"-" }}</a></td>
+                  <td>{{ ToolType.name }}</td>
+                  <td>{{ ToolType.type }}</td>
+                  <td>{{ ToolType.description }}</td>
+                  <td>{{ ToolType.value }}</td>
+                  <td>
+                      {% if account.is_editable %}
+                          <a href="{% url 'accounts_dashboard:accounts-update' account.id %}" class="btn btn-primary">{% trans "Edit" %}</a>
+                      {% else %}
+                          <a href="#" class="btn btn-primary disabled">{% trans "Edit" %}</a>
+                      {% endif %}
+                      <a href="{% url 'accounts_dashboard:accounts-detail' account.id %}" class="btn btn-primary">{% trans "Transactions" %}</a>
+                      {% if account.is_editable %}
+                          <a href="{% url 'accounts_dashboard:accounts-top-up' account.id %}" class="btn btn-primary">{% trans "Top-up" %}</a>
+                          <a href="{% url 'accounts_dashboard:accounts-withdraw' account.id %}" class="btn btn-primary">{% trans "Withdraw" %}</a>
+                          {% if not account.is_frozen %}
+                              <a href="{% url 'accounts_dashboard:accounts-freeze' account.id %}" class="btn btn-danger">{% trans "Freeze" %}</a>
+                          {% else %}
+                              <a href="{% url 'accounts_dashboard:accounts-thaw' account.id %}" class="btn btn-success">{% trans "Thaw" %}</a>
+                          {% endif %}
+                      {% else %}
+                          <a href="#" class="btn btn-primary disabled">{% trans "Top-up" %}</a>
+                      {% endif %}
+                  </td>
+              </tr>
+          {% endfor %}
+      </table>
+      {% include "oscar/partials/pagination.html" %}
+  {% else %}
+      <div class="panel-body">
+          <p>{% trans "No results found." %}</p>
+      </div>
+  {% endif %}
+</div>
+
+{% endblock dashboard_content %}
+
+{% block onbodyload %}
+    {{ block.super }}
+    $('a.form-toggle').click(function(){
+        $($(this)[0].parentNode.nextElementSibling).toggle();
+        // Bind datepicker
+        oscar.dashboard.init();
+        return false;
+    });
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'oscar/dashboard/layout.html' %}
+{% load currency_filters %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {{ title }} | {% trans "Novos usuários" %} | {{ block.super }}
+{% endblock %}
+{% block header %}
+    <div class="page-header">
+        <!--
+        <a id="create_new_account" href="{% url 'accounts_dashboard:accounts-create' %}" class="btn btn-large btn-primary pull-right">{% trans "Create a new account " %}</a></p>
+        -->
+        <a id="create_new_saldo" style="margin-right: 10px;" href="{% url 'inserir-credito-view' %}" class="btn btn-large btn-primary pull-right">{% trans "Criar novo credito" %}</a></p>
+        <a id="create_new_tool" style="margin-right: 10px;" href="{% url 'criar-ferramenta-view' %}" class="btn btn-large btn-primary pull-right">{% trans "Criar nova ferramenta" %}</a></p>
+        <a id="create_new_users" style="margin-right: 10px;" href="{% url 'import-new-users-view' %}" class="btn btn-large btn-primary pull-right">{% trans "Criar novos usuários" %}</a></p>
+        <a id="create_credit_pool" style="margin-right: 10px;" href="{% url 'import-new-users-view' %}" class="btn btn-large btn-primary pull-right">{% trans "Buscar de arquivo externo" %}</a></p>
+        
+    <h1>{{ title }}</h1>
+</div>
+{% endblock header %}
+{% block breadcrumbs %}
+    <ul class="breadcrumb">
+        <li>
+            <a href="{% url 'dashboard:index' %}">{% trans "Dashboard" %}</a>
+        </li>
+        <li>
+            <a href="{% url 'accounts_dashboard:accounts-list' %}">{% trans "Accounts" %}</a>
+        </li>
+        {% if account %}
+            <li>
+                <a href="{% url 'accounts_dashboard:accounts-detail' account.id %}">{{ account }}</a>
+            </li>
+            <li class="active">{% trans "Update" %}</li>
+        {% else %}
+            <li class="active">{% trans "Create" %}</li>
+        {% endif %}
+    </ul>
+{% endblock %}
+
+{% block headertext %}{{ title }}{% endblock %}
+
+{% block dashboard_content %}
+
+<div class="panel panel-default">
+    <div class="panel-heading">{% trans "Edit" %}</div>
+    <div class="panel-body">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" id="id_arquivo" name="arquivo">
+            <input type="submit">
+            <!--
+            <div class="form-actions">
+              <button class="btn btn-primary btn-large" type="submit">{% trans "Save" %}</button>
+                {% trans "or" %}
+                <a href="{% url 'accounts_dashboard:accounts-list' %}">{% trans "cancel" %}</a>
+            </div>
+            -->
+        </form>
+    </div>
+</div>
+<div class="panel panel-default">
+  
+</div>
+
+{% endblock dashboard_content %}
+
+{% block onbodyload %}
+    {{ block.super }}
+    $('a.form-toggle').click(function(){
+        $($(this)[0].parentNode.nextElementSibling).toggle();
+        // Bind datepicker
+        oscar.dashboard.init();
+        return false;
+    });
+{% endblock %}

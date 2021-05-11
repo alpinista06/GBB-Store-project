@@ -1,0 +1,162 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-29 14:57-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: marioshop/apps/checkout/views.py:116
+msgid "An error occurred allocating from your account"
+msgstr "Ocorreu um erro ao alocar de sua conta"
+
+#: marioshop/apps/checkout/views.py:141
+msgid "Allocation recorded"
+msgstr "Alocação registrada "
+
+#: marioshop/apps/checkout/views.py:151
+#, python-format
+msgid "No allocation found with code '%s'"
+msgstr "Nenhuma alocação encontrada com código '%s'"
+
+#: marioshop/apps/checkout/views.py:155
+msgid "Allocation removed"
+msgstr "Alocação removida"
+
+#~ msgid "Check my balance"
+#~ msgstr "Verificar meu saldo"
+
+#~ msgid "Home"
+#~ msgstr "Início"
+
+#~ msgid "Accounts"
+#~ msgstr "Contas"
+
+#~ msgid "Check balance of giftcard"
+#~ msgstr "Verifique o saldo do vale-presente "
+
+#~ msgid "Your IP address is currently blocked.  Please try again later."
+#~ msgstr ""
+#~ "Seu endereço IP está bloqueado no momento. Por favor, tente novamente "
+#~ "mais tarde. "
+
+#~ msgid "Code"
+#~ msgstr "Código"
+
+#~ msgid "Account"
+#~ msgstr "Conta"
+
+#~ msgid "Balance"
+#~ msgstr "Saldo"
+
+#~ msgid "Status"
+#~ msgstr "Status"
+
+#~ msgid "end_date"
+#~ msgstr "end_date"
+
+#~ msgid "Is Active"
+#~ msgstr "Está Ativo"
+
+#~ msgid "Days remaining"
+#~ msgstr "Dias restantes"
+
+#~ msgid "Fetch account details"
+#~ msgstr "Obter detalhes da conta "
+
+#~ msgid "Start date"
+#~ msgstr "Data de início"
+
+#~ msgid "End date"
+#~ msgstr "Data de fim"
+
+#~ msgid "Enter payment details"
+#~ msgstr "Insira os detalhes do pagamento"
+
+#~ msgid "You are blocked."
+#~ msgstr "Você está bloqueado."
+
+#~ msgid "Choose a user account"
+#~ msgstr "Escolher uma conta de usuário"
+
+#~ msgid "Select account"
+#~ msgstr "Selecionar Conta"
+
+#~ msgid "Look up an account"
+#~ msgstr "Procure uma conta"
+
+#~ msgid "Check balance"
+#~ msgstr "Verificar Saldo"
+
+#~ msgid "Name"
+#~ msgstr "Nome"
+
+#~ msgid "Description"
+#~ msgstr "Descrição"
+
+#~ msgid "Expiry date"
+#~ msgstr "Data de expiração"
+
+#~ msgid "Choose allocation"
+#~ msgstr "Escolher alocação"
+
+#~ msgid "The order total is"
+#~ msgstr "O total da comanda é"
+
+#~ msgid "The maximum allocation from this account is"
+#~ msgstr "A alocação máxima para essa conta é"
+
+#~ msgid "Allocate"
+#~ msgstr "Alocar"
+
+#~ msgid "or"
+#~ msgstr "ou"
+
+#~ msgid "cancel"
+#~ msgstr "cancelar"
+
+#~ msgid "Allocations"
+#~ msgstr "Alocações"
+
+#~ msgid "Account code"
+#~ msgstr "Código da conta"
+
+#~ msgid "Allocation"
+#~ msgstr "Alocação"
+
+#~ msgid "Remove"
+#~ msgstr "Remover"
+
+#~ msgid "Continue"
+#~ msgstr "Continuar"
+
+#~ msgid "Order total"
+#~ msgstr "Total da comanda"
+
+#~ msgid "You need to allocate another"
+#~ msgstr "Você precisa alocar outro"
+
+#~ msgid "Payment"
+#~ msgstr "Pagamento"
+
+#~ msgid "Account allocations"
+#~ msgstr "Alocações em conta"
+
+#~ msgid "from account with code"
+#~ msgstr "da conta com código"
+
+#~ msgid "Change payment details"
+#~ msgstr "Mudar modo de pagamento"
+
+#~ msgid "%(amount)s from account with code %(ref)s"
+#~ msgstr "%(amount)s da conta com código %(ref)s"

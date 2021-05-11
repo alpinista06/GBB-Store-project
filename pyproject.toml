@@ -1,0 +1,31 @@
+[tool.black]
+line-length = 89
+exclude = '''
+/(
+  | migrations
+)/
+
+'''
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+line_length = 89
+force_grid_wrap = 0
+combine_as_imports = true
+skip='''
+/(
+  | migrations
+)/
+
+'''
+
+[tool.flake8]
+exclude = '''
+/(
+  | migrations
+)/
+
+'''
+max-line-length = 89
+no-accept-encodings = true

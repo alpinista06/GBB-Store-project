@@ -1,0 +1,12 @@
+{% extends 'oscar/dashboard/layout.html' %}
+{% extends 'oscar_accounts/templates/dashboard/account_list.html' %}
+{% load currency_filters %}
+{% load i18n %}
+
+{% block header %}
+    <div class="page-header">
+        <a id="create_new_account" href="{% url 'accounts_dashboard:accounts-create' %}" class="btn btn-large btn-primary pull-right">{% trans "Create a new " %} {{ unit_name|lower }}</a></p>
+        <a id="create_new_saldo" href="{% url 'inserir-credito-view' %}" class="btn btn-large btn-primary pull-right">{% trans "Create a new credit" %}</a></p>
+    <h1>{{ title }}</h1>
+</div>
+{% endblock header %}
